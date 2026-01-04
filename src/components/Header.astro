@@ -1,0 +1,159 @@
+---
+const nav = [
+  { label: "Головна", href: "#top" },
+  { label: "Послуги", href: "#services" },
+  { label: "Чому ми?", href: "#why" },
+  { label: "Кейси", href: "#cases" },
+  { label: "Актори", href: "#actors" },
+  { label: "Етапи співпраці", href: "#process" },
+  { label: "FAQ", href: "#faq" },
+];
+---
+
+<header class="header">
+  <div class="container header__inner">
+    <div class="logo">PUSH</div>
+
+    <nav class="pill nav" aria-label="Навігація">
+      {nav.map((item, idx) => (
+        <a class={`nav__link ${idx === 0 ? "is-active" : ""}`} href={item.href}>
+          {item.label}
+        </a>
+      ))}
+
+      <button class="nav__gift" type="button" aria-label="Подарунок">🎁</button>
+    </nav>
+
+    <div class="right">
+      <button class="pill lang" type="button">
+        Укр <span class="caret">▾</span>
+      </button>
+
+      <a class="pill contact" href="#contact">
+        Контакти <span class="contact__arrow">↗</span>
+      </a>
+
+      <button class="burger pill" type="button" aria-label="Меню" data-burger>
+        ☰
+      </button>
+    </div>
+  </div>
+
+  <div class="container mobile pill" data-mobile hidden>
+    {nav.map((item) => (
+      <a class="mobile__link" href={item.href}>{item.label}</a>
+    ))}
+    <a class="mobile__link" href="#contact">Контакти</a>
+  </div>
+
+  <script>
+    const burger = document.querySelector("[data-burger]");
+    const mobile = document.querySelector("[data-mobile]");
+    if (burger && mobile) {
+      burger.addEventListener("click", () => {
+        const isHidden = mobile.hasAttribute("hidden");
+        if (isHidden) mobile.removeAttribute("hidden");
+        else mobile.setAttribute("hidden", "");
+      });
+    }
+  </script>
+</header>
+
+<style>
+  .header{ padding: 22px 0 0; }
+  .header__inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .logo{
+    font-size: 34px;
+    font-weight: 900;
+    letter-spacing: .5px;
+  }
+
+  .nav{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    width: min(820px, 100%);
+  }
+
+  .nav__link{
+    padding:10px 14px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    white-space:nowrap;
+    opacity:.95;
+  }
+  .nav__link:hover{ background: rgba(0,0,0,.06); }
+  .nav__link.is-active{
+    background:#111;
+    color:#fff;
+  }
+
+  .nav__gift{
+    margin-left:auto;
+    width:40px; height:40px;
+    border-radius:12px;
+    border: 1px solid rgba(0,0,0,.08);
+    background: rgba(255,255,255,.9);
+    cursor:pointer;
+  }
+
+  .right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+
+  .lang{
+    padding:10px 14px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    cursor:pointer;
+  }
+  .caret{ opacity:.7; }
+
+  .contact{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 14px;
+    font-weight:800;
+  }
+  .contact__arrow{
+    width:34px; height:34px;
+    display:grid; place-items:center;
+    border-radius:10px;
+    background:#ff6a00;
+    color:#fff;
+  }
+
+  .burger{ display:none; padding:10px 14px; cursor:pointer; }
+
+  .mobile{
+    margin-top: 10px;
+    padding: 12px;
+    display:none;
+    flex-direction:column;
+    gap:8px;
+  }
+  .mobile__link{
+    padding:12px 14px;
+    border-radius: 12px;
+    font-weight: 800;
+  }
+  .mobile__link:hover{ background: rgba(0,0,0,.06); }
+
+  @media (max-width: 980px){
+    .nav{ display:none; }
+    .burger{ display:inline-flex; }
+    .mobile{ display:flex; }
+  }
+</style>
