@@ -2,7 +2,7 @@
 const nav = [
   { label: "Головна", href: "#golovna" },
   { label: "Послуги", href: "#services" },
-  { label: "Чому ми?", href: "#whyyyyyyyyyyyyyyy" },
+  { label: "Чому ми?", href: "#why" },
   { label: "Кейси", href: "#cases" },
   { label: "Актори", href: "#actors" },
   { label: "Етапи співпраці", href: "#process" },
@@ -14,14 +14,14 @@ const nav = [
   <div class="container header__inner">
     <div class="logo">PUSH</div>
 
-    <nav class="pill nav" aria-label="Наша Навігація">
+    <nav class="pill nav" aria-label="Our Навігація">
       {nav.map((item, idx) => (
         <a class={`nav__link ${idx === 0 ? "is-active" : ""}`} href={item.href}>
           {item.label}
         </a>
       ))}
 
-      <button class="nav__gift" type="button" aria-label="Подарунок">🎁</button>
+      <button class="nav__gift" type="button" aria-label="Подарунки">🎁</button>
     </nav>
 
     <div class="right">
